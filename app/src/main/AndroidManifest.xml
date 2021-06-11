@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Activity7Dan8"
         android:usesCleartextTraffic="true">
-        <activity android:name=".TambahTeman"></activity>
+        <activity android:name=".EditTeman"></activity>
+        <activity android:name=".TambahTeman" />
 
         <activity android:name=".MainActivity">
             <intent-filter>

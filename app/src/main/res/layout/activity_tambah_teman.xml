@@ -31,6 +31,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edNama"
         app:layout_constraintTop_toBottomOf="@+id/edNama" />
+
     <Button
         android:id="@+id/btnSimpan"
         android:layout_width="wrap_content"
@@ -41,5 +42,4 @@
         app:layout_constraintEnd_toEndOf="@id/edTelpon"
         app:layout_constraintStart_toStartOf="@id/edTelpon"
         app:layout_constraintTop_toBottomOf="@id/edTelpon"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

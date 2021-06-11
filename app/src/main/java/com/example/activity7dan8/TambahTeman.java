@@ -1,5 +1,6 @@
 package com.example.activity7dan8;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,35 +46,41 @@ public class TambahTeman extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SimpanData();
+                Intent inten = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(inten);
+                finish();
             }
         });
     }
 
-    public void SimpanData(){
+    public void SimpanData()
+    {
         if (editNama.getText().toString().equals("")||editTelpon.getText().toString().equals("")){
             Toast.makeText(TambahTeman.this,"Semua harus diisi data",Toast.LENGTH_SHORT).show();
         }
-        else{
+        else
+        {
             nm = editNama.getText().toString();
             tlp = editTelpon.getText().toString();
 
             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
             StringRequest strReq = new StringRequest(Request.Method.POST, url_insert, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     Log.d(TAG, "Response : " + response.toString());
+
                     try {
                         JSONObject jObj = new JSONObject(response);
                         success = jObj.getInt(TAG_SUCCES);
                         if (success == 1) {
                             Toast.makeText(TambahTeman.this, "Sukses simpan data", Toast.LENGTH_SHORT).show();
-                        } else {
+                        }else{
                             Toast.makeText(TambahTeman.this, "gagal", Toast.LENGTH_SHORT).show();
                         }
-                    } catch (JSONException e) {
+                    }catch(JSONException e){
                         e.printStackTrace();
-                    }
-                }
+                    }}
             },  new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
@@ -85,6 +92,7 @@ public class TambahTeman extends AppCompatActivity {
                 @Override
                 protected Map<String,String> getParams(){
                     Map<String,String> params = new HashMap<>();
+
                     params.put("nama",nm);
                     params.put("telpon",tlp);
 
